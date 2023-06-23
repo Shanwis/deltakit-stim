@@ -96,6 +96,9 @@ void ErrorAnalyzer::undo_gate(const CircuitInstruction &inst) {
         case GateType::MZZ:
             undo_MZZ(inst);
             break;
+        case GateType::HERALD_LEAKAGE_EVENT:
+            undo_HERALD_LEAKAGE_EVENT(inst);
+            break;
         case GateType::XCX:
             undo_XCX(inst);
             break;
@@ -128,6 +131,12 @@ void ErrorAnalyzer::undo_gate(const CircuitInstruction &inst) {
             break;
         case GateType::DEPOLARIZE2:
             undo_DEPOLARIZE2(inst);
+            break;
+        case GateType::LEAKAGE:
+            undo_LEAKAGE(inst);
+            break;
+        case GateType::RELAX:
+            undo_RELAX(inst);
             break;
         case GateType::X_ERROR:
             undo_X_ERROR(inst);
@@ -526,6 +535,9 @@ void ErrorAnalyzer::undo_MRZ(const CircuitInstruction &dat) {
     }
 }
 
+void ErrorAnalyzer::undo_HERALD_LEAKAGE_EVENT(const CircuitInstruction &dat) {
+}
+
 void ErrorAnalyzer::undo_H_XZ(const CircuitInstruction &dat) {
     tracker.undo_H_XZ(dat);
 }
@@ -813,6 +825,15 @@ void ErrorAnalyzer::undo_DEPOLARIZE2(const CircuitInstruction &dat) {
             });
     }
 }
+
+void ErrorAnalyzer::undo_LEAKAGE(const CircuitInstruction &dat) {
+    // so far, a no-op
+}
+
+void ErrorAnalyzer::undo_RELAX(const CircuitInstruction &dat) {
+    // so far, a no-op
+}
+
 
 void ErrorAnalyzer::undo_ELSE_CORRELATED_ERROR(const CircuitInstruction &dat) {
     if (accumulate_errors) {

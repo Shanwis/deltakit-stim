@@ -256,6 +256,9 @@ struct QuirkExporter {
                     case GateType::ELSE_CORRELATED_ERROR:
                     case GateType::HERALDED_ERASE:
                     case GateType::HERALDED_PAULI_CHANNEL_1:
+                    case GateType::LEAKAGE:
+                    case GateType::RELAX:
+                    case GateType::HERALD_LEAKAGE_EVENT:
                         // Ignored.
                         break;
 
