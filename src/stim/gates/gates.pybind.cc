@@ -80,6 +80,7 @@ pybind11::class_<Gate> stim_pybind::pybind_gate_data(pybind11::module &m) {
     return pybind11::class_<Gate>(
         m,
         "GateData",
+        pybind11::module_local(),
         clean_doc_string(R"DOC(
             Details about a gate supported by stim.
 
