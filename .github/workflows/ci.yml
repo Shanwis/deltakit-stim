@@ -90,7 +90,7 @@ jobs:
           {os: macos-latest, dist: cp310-macosx_x86_64, macosarch: x86_64},
           {os: macos-latest, dist: cp311-macosx_x86_64, macosarch: x86_64},
           {os: macos-latest, dist: cp312-macosx_x86_64, macosarch: x86_64},
-
+          # MacOS arm arch
           {os: macos-latest, dist: cp39-macosx_arm64, macosarch: arm64},
           {os: macos-latest, dist: cp310-macosx_arm64, macosarch: arm64},
           {os: macos-latest, dist: cp311-macosx_arm64, macosarch: arm64},
@@ -142,6 +142,10 @@ jobs:
     env:
       CIBW_BUILD: "${{ matrix.os_dist.dist }}"
       CIBW_ARCHS_MACOS: "${{ matrix.os_dist.macosarch }}"
+      # Optional: Configure repair command to handle deployment target issues
+      CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
+        delocate-wheel --require-archs {delocate_archs} -w {dest_dir} -v {wheel}
+        --ignore-missing-dependencies
       ### Skip tests
       # CIBW_TEST_REQUIRES: cirq-core pytest
       # CIBW_TEST_COMMAND: pytest {project}/src {project}/glue/cirq && stim help
