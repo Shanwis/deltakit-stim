@@ -1724,6 +1724,7 @@ Circuit stim::generate_test_circuit_with_all_operations() {
         RX 7
         RY 8
         RZ 9
+        RL 0
         TICK
 
         # Pair Measurement Gates
