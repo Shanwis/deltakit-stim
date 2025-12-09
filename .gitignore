@@ -43,3 +43,6 @@ build.ninja
 .ninja_log
 .pytest_cache
 node_modules
+# Project specific
+# Ignore Emacs backup files.
+*~
