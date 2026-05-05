@@ -47,6 +47,7 @@ node_modules
 *~
 MODULE.bazel.lock
 .ninja_lock
+uv.lock
 
 # Sphinx documentation
 docs/_build/
